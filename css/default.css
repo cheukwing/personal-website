@@ -14,7 +14,11 @@ main {
   margin: 0 5%;
 }
 
-/* header */
+.landing {
+  color: red;
+}
+
+/* header from https://codepen.io/mutedblues/pen/MmPNPG */
 
 header {
   background-color: #e7dbd8;
