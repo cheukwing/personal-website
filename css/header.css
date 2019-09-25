@@ -4,6 +4,7 @@
 
 header {
   background-color: #20291e;
+  font-family: "Alegreya", serif;
   width: 100%;
   position: fixed;
   overflow: auto;
@@ -107,7 +108,7 @@ header {
 }
 
 .header .menu-btn:checked ~ .menu {
-  max-height: 300px;
+  max-height: 500px;
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon {
