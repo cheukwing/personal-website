@@ -1,12 +1,13 @@
 body {
-  font-family: "Crimson Text", serif;
+  font-family: "Alegreya", serif;
   margin: 0;
-  background-color: #f6e8e5;
+  background-color: #20291e;
   font-size: 1.2rem;
+  color: #fdfdfd;
 }
 
 a {
-  color: #000;
+  color: #fdfdfd;
 }
 
 main {
@@ -15,152 +16,42 @@ main {
 }
 
 .landing {
-  color: red;
-}
-
-/* header from https://codepen.io/mutedblues/pen/MmPNPG */
-
-header {
-  background-color: #e7dbd8;
-  width: 100%;
+  text-align: right;
+  font-size: 1.5rem;
   position: fixed;
-  overflow: auto;
+  margin: 0 5% 10% 20%;
+  bottom: 0;
+  animation: 1s ease-out 0s 1 slideInFromRight;
 }
-
-.header {
-  height: 100%;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 90%;
-  z-index: 3;
-  overflow: hidden;
-  border-bottom: 1px solid black;
-}
-
-.header ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  overflow: hidden;
-  background-color: #e7dbd8;
-}
-
-.header li a {
-  display: block;
-  padding: 20px 20px;
-  text-decoration: none;
-  outline: 0;
-}
-
-.header li a:hover,
-.header .menu-btn:hover {
-  /* TODO: change me */
-  color: red;
-}
-
-.header .logo {
-  outline: 0;
-  display: block;
-  float: left;
-  font-size: 2em;
-  padding: 10px 20px 7px 20px;
-  text-decoration: none;
-}
-
-/* menu */
-
-.header .menu {
-  clear: both;
-  max-height: 0;
-  transition: max-height 0.2s ease-out;
-}
-
-/* menu icon */
-
-.header .menu-icon {
-  cursor: pointer;
-  display: inline-block;
-  float: right;
-  padding: 33px 20px;
-  position: relative;
-  user-select: none;
-}
-
-.header .menu-icon .navicon {
-  background: #333;
-  display: block;
-  height: 2px;
-  position: relative;
-  transition: background 0.2s ease-out;
-  width: 18px;
-}
-
-.header .menu-icon .navicon:before,
-.header .menu-icon .navicon:after {
-  background: #333;
-  content: "";
-  display: block;
-  height: 100%;
-  position: absolute;
-  transition: all 0.2s ease-out;
-  width: 100%;
-}
-
-.header .menu-icon .navicon:before {
-  top: 5px;
-}
-
-.header .menu-icon .navicon:after {
-  top: -5px;
-}
-
-/* menu btn */
-
-.header .menu-btn {
-  display: none;
-}
-
-.header .menu-btn:checked ~ .menu {
-  max-height: 300px;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon {
-  background: transparent;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon:before {
-  transform: rotate(-45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon:after {
-  transform: rotate(45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
-  top: 0;
-}
-
-/* 48em = 768px */
 
 @media (min-width: 48em) {
   main {
     margin: 0 20%;
   }
 
-  .header li {
-    float: left;
+  .landing {
+    font-size: 2.5rem;
   }
-  .header li a {
-    padding: 20px 30px;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(5%);
+    opacity: 0;
   }
-  .header .menu {
-    clear: none;
-    float: right;
-    max-height: none;
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
-  .header .menu-icon {
-    display: none;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-5%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

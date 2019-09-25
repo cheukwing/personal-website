@@ -18,6 +18,7 @@ main = hakyll $ do
     match (fromList ["about.md", "education.md", "experience.md", "other.md"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/information.html" defaultContext
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
