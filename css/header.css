@@ -3,10 +3,11 @@
 /* header */
 
 header {
-  background-color: #1e2922;
+  background-color: #20291e;
   width: 100%;
   position: fixed;
   overflow: auto;
+  z-index: 3;
 }
 
 .header {
@@ -15,7 +16,6 @@ header {
   right: 0;
   margin: 0 auto;
   width: 90%;
-  z-index: 3;
   overflow: hidden;
   border-bottom: 1px solid #fdfdfd;
 }
@@ -24,8 +24,7 @@ header {
   margin: 0;
   padding: 0;
   list-style: none;
-  overflow: hidden;
-  background-color: #1e2922;
+  background-color: #20291e;
 }
 
 .header li a {
@@ -36,10 +35,10 @@ header {
   animation: 1s ease-out 0s 1 slideInFromRight;
 }
 
+.header .logo:hover,
 .header li a:hover,
 .header .menu-btn:hover {
-  /* TODO: change me */
-  color: red;
+  color: #d3d3d3;
 }
 
 .header .logo {

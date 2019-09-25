@@ -2,4 +2,4 @@
 title: Home
 ---
 
-This is the online home of Michael "Cheuk Wing" Tsang, a final year Computing student at Imperial College London with an enthusiasm for functional programming - say hello!
+This is the online home of Michael Tsang: final year Computing student at Imperial College London, functional programming fan, and snack enthusiast - come say hello!
