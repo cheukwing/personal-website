@@ -1,98 +1,162 @@
-html {
-  font-size: 62.5%;
+body {
+  font-family: "Crimson Text", serif;
+  margin: 0;
+  background-color: #f6e8e5;
+  font-size: 1.2rem;
 }
 
-body {
-  font-size: 1.6rem;
+a {
   color: #000;
-  width: 90%;
-  margin: 0;
-  padding: 0 5%;
 }
+
+main {
+  padding-top: 50px;
+  margin: 0 5%;
+}
+
+/* header */
 
 header {
-  border-bottom: 0.2rem solid #000;
-  margin: 4.2rem 0;
+  background-color: #e7dbd8;
+  width: 100%;
+  position: fixed;
+  overflow: auto;
 }
 
-nav {
-  text-align: right;
-  margin: 0 auto 3rem;
-  text-align: center;
+.header {
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 90%;
+  z-index: 3;
+  overflow: hidden;
+  border-bottom: 1px solid black;
 }
 
-nav a {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: black;
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #e7dbd8;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
   text-decoration: none;
-  text-transform: uppercase;
-  display: inline;
-  margin: 0 0.6rem;
+  outline: 0;
 }
 
-footer {
-  margin-top: 3rem;
-  padding: 1.2rem 0;
-  border-top: 0.2rem solid #000;
-  font-size: 1.2rem;
-  color: #555;
-  text-align: center;
+.header li a:hover,
+.header .menu-btn:hover {
+  /* TODO: change me */
+  color: red;
 }
 
-h1 {
-  font-size: 2.4rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-article .header {
-  font-size: 1.4rem;
-  font-style: italic;
-  color: #555;
-}
-
-.logo {
-  text-align: center;
-  margin: 1rem auto 3rem;
-}
-
-.logo a {
-  font-weight: bold;
-  color: #000;
+.header .logo {
+  outline: 0;
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px 7px 20px;
   text-decoration: none;
-  font-size: 2.4rem;
 }
 
-@media (min-width: 640px) {
-  body {
-    width: 60rem;
-    margin: 0 auto;
-    padding: 0;
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 33px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 300px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  main {
+    margin: 0 20%;
   }
-  header {
-    margin: 0 0 3rem;
-    padding: 1.2rem 0;
-  }
-  nav {
-    margin: 0;
-    text-align: right;
-  }
-  nav a {
-    margin: 0 0 0 1.2rem;
-    display: inline;
-  }
-  footer {
-    text-align: right;
-  }
-  .logo {
-    margin: 0;
-    text-align: left;
-  }
-  .logo a {
+
+  .header li {
     float: left;
-    font-size: 1.8rem;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
   }
 }
