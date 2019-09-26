@@ -1,17 +1,13 @@
 ---
 title: About
 ---
-Nullam imperdiet sodales orci vitae molestie. Nunc quam orci, pharetra a
-rhoncus vitae, eleifend id felis. Suspendisse potenti. Etiam vitae urna orci.
-Quisque pellentesque dignissim felis, egestas tempus urna luctus vitae. In hac
-habitasse platea dictumst. Morbi fringilla mattis odio, et mattis tellus
-accumsan vitae.
 
-1. Amamus Unicode 碁
-2. Interdum nex magna.
+Hello, I'm Michael and welcome to my [Hakyll](https://jaspervdj.be/hakyll/) website!
+My middle (Chinese) name is Cheuk Wing, which is unsurprising rarer than Michael, so that's how I brand myself online - it certainly makes domains cheaper!
 
-Vivamus eget mauris sit amet nulla laoreet lobortis. Nulla in diam elementum
-risus convallis commodo. Cras vehicula varius dui vitae facilisis. Proin
-elementum libero eget leo aliquet quis euismod orci vestibulum. Duis rhoncus
-lorem consequat tellus vestibulum aliquam. Quisque orci orci, malesuada porta
-blandit et, interdum nec magna.
+$partial("templates/links.html")$
+
+I have some small, throwaway projects you can checkout too:
+
+- Pong, made using Elm: <https://pong.cheukwing.dev>
+- Stand sheets, inspired by the series Jojo's Bizarre Adventure: <https://jojo.cheukwing.dev>

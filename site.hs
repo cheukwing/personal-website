@@ -10,6 +10,10 @@ import           System.FilePath.Posix  (takeBaseName,takeDirectory
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    match "files/*" $ do
+        route idRoute
+        compile copyFileCompiler
+
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -18,19 +22,28 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["about.md", "education.md", "experience.md", "other.md"]) $ do
+    match (fromList ["education.md", "experience.md", "projects.md", "other.md"]) $ do
         route   $ niceRoute
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/information.html" defaultContext
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= removeIndexHtml
+    
+    match "about.md" $ do
+        route   $ niceRoute
+        compile $ getResourceBody
+            >>= applyAsTemplate defaultContext
+            >>= renderPandoc
+            >>= loadAndApplyTemplate "templates/information.html" defaultContext
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= removeIndexHtml
 
     match "index.md" $ do
-        route $ setExtension "html"
+        route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/landing.html" defaultContext
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+            >>= removeIndexHtml
 
     match "templates/*" $ compile templateBodyCompiler
 

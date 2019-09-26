@@ -12,6 +12,10 @@ header {
   box-shadow: 0 4px 6px -6px #20291e;
 }
 
+header a {
+  color: #f5f5f5;
+}
+
 .header {
   height: 100%;
   padding: 0 5%;
@@ -127,9 +131,7 @@ header {
   top: 0;
 }
 
-/* 48em = 768px */
-
-@media (min-width: 48em) {
+@media (min-width: 810px) {
   .header li {
     float: left;
   }
