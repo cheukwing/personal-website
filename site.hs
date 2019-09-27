@@ -22,7 +22,12 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["education.md", "experience.md", "projects.md", "other.md"]) $ do
+    match "education/*" $ do
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/education.html" defaultContext
+            >>= removeIndexHtml
+
+    match (fromList ["experience.md", "projects.md", "other.md"]) $ do
         route   $ niceRoute
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/information.html" defaultContext
@@ -37,6 +42,21 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/information.html" defaultContext
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= removeIndexHtml
+
+    match "education.md" $ do
+        route   $ niceRoute
+        compile $ do
+            education <- loadAll "education/*"
+            let educationCtx =
+                    listField "education" defaultContext (return education) `mappend`
+                    defaultContext
+            
+            getResourceBody
+                >>= applyAsTemplate educationCtx
+                >>= renderPandoc
+                >>= loadAndApplyTemplate "templates/information.html" educationCtx
+                >>= loadAndApplyTemplate "templates/default.html" educationCtx
+                >>= removeIndexHtml
 
     match "index.md" $ do
         route   $ setExtension "html"

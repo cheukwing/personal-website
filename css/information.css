@@ -1,0 +1,33 @@
+.organisation-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: baseline;
+}
+
+.organisation {
+  margin-bottom: 0;
+}
+
+.date {
+  margin: 0;
+  font-style: italic;
+}
+
+.location {
+  flex-grow: 1;
+  font-style: italic;
+  color: #858585;
+  margin: 0;
+}
+
+.role {
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .organisation-info {
+    flex-direction: row;
+  }
+}
