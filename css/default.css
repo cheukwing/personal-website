@@ -28,10 +28,6 @@ main {
   animation: 1s ease-out 0s 1 fadeIn;
 }
 
-footer {
-  height: 60px;
-}
-
 .filler {
   padding-top: 60px;
 }

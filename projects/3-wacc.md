@@ -1,7 +1,7 @@
 ---
 name: WACC
 role: Compilers Group Project
-start: Oct 2017
+start: Oct
 end: Dec 2017
 ---
 

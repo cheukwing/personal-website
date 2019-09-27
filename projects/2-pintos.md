@@ -1,7 +1,7 @@
 ---
 name: PintOS
 role: Operating Systems Group Project
-start: Jan 2018
+start: Jan
 end: Mar 2018
 ---
 
