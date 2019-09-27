@@ -1,7 +1,7 @@
 ---
 name: Imperial College London
 location: London
-course: MEng Computing (Predicted First Class)
+role: MEng Computing (Predicted First Class)
 start: 2016
 end: 2020
 ---

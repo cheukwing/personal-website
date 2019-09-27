@@ -22,12 +22,13 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "education/*" $ do
+    match ("education/*" .||. "experience/*" .||. "projects/*" .||. "other/*") $ do
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/education.html" defaultContext
+            >>= loadAndApplyTemplate "templates/entry.html" defaultContext
             >>= removeIndexHtml
 
-    match (fromList ["experience.md", "projects.md", "other.md"]) $ do
+
+    match (fromList ["projects.md", "other.md"]) $ do
         route   $ niceRoute
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/information.html" defaultContext
@@ -46,16 +47,31 @@ main = hakyll $ do
     match "education.md" $ do
         route   $ niceRoute
         compile $ do
-            education <- loadAll "education/*"
-            let educationCtx =
-                    listField "education" defaultContext (return education) `mappend`
+            entries <- loadAll "education/*"
+            let ctx =
+                    listField "education" defaultContext (return entries) `mappend`
                     defaultContext
             
             getResourceBody
-                >>= applyAsTemplate educationCtx
+                >>= applyAsTemplate ctx
                 >>= renderPandoc
-                >>= loadAndApplyTemplate "templates/information.html" educationCtx
-                >>= loadAndApplyTemplate "templates/default.html" educationCtx
+                >>= loadAndApplyTemplate "templates/information.html" ctx
+                >>= loadAndApplyTemplate "templates/default.html" ctx
+                >>= removeIndexHtml
+
+    match "experience.md" $ do
+        route   $ niceRoute
+        compile $ do
+            entries <- loadAll "experience/*"
+            let ctx =
+                    listField "experience" defaultContext (return entries) `mappend`
+                    defaultContext
+            
+            getResourceBody
+                >>= applyAsTemplate ctx
+                >>= renderPandoc
+                >>= loadAndApplyTemplate "templates/information.html" ctx
+                >>= loadAndApplyTemplate "templates/default.html" ctx
                 >>= removeIndexHtml
 
     match "index.md" $ do
