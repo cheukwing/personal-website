@@ -10,6 +10,10 @@ a {
   color: #212121;
 }
 
+strong {
+  font-weight: 700;
+}
+
 h1,
 h2,
 h3,
@@ -19,13 +23,17 @@ h6 {
   font-family: "Alegreya", serif;
 }
 
-.filler {
-  padding-top: 60px;
-}
-
 main {
   margin: 0 5%;
   animation: 1s ease-out 0s 1 fadeIn;
+}
+
+footer {
+  height: 60px;
+}
+
+.filler {
+  padding-top: 60px;
 }
 
 .landing {

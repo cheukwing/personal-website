@@ -1,7 +1,7 @@
 <span class="organisation-info">
   <h2 class="organisation">$name$&nbsp;</h2>
-  <p class="location">$location$</p>
-  <p class="date">$start$ - $end$</p>
+  <p class="location">$if(location)$ $location$ $endif$</p>
+  <p class="date">$start$ $if(end)$ - $end$ $endif$</p>
 </span>
 <p class="role">$if(role)$ $role$ $endif$</p>
 $body$
