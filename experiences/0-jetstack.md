@@ -2,7 +2,7 @@
 name: Jetstack
 location: London
 role: Software Engineer Intern
-start: Apr 2019
+start: Apr
 end: Sep 2019
 ---
 

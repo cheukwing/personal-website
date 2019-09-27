@@ -2,7 +2,7 @@
 name: Ocado Technology
 location: Hatfield
 role: Technology Intern
-start: Jul 2018
+start: Jul
 end: Sep 2018
 ---
 

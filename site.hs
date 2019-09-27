@@ -22,57 +22,30 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match ("education/*" .||. "experience/*" .||. "projects/*" .||. "other/*") $ do
+    match ("education/*" .||. "experiences/*" .||. "projects/*" .||. "other/*") $ do
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/entry.html" defaultContext
             >>= removeIndexHtml
 
-
-    match (fromList ["projects.md", "other.md"]) $ do
-        route   $ niceRoute
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/information.html" defaultContext
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= removeIndexHtml
-    
     match "about.md" $ do
         route   $ niceRoute
-        compile $ getResourceBody
-            >>= applyAsTemplate defaultContext
-            >>= renderPandoc
-            >>= loadAndApplyTemplate "templates/information.html" defaultContext
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= removeIndexHtml
+        compile $ toInformationPage defaultContext
 
     match "education.md" $ do
         route   $ niceRoute
-        compile $ do
-            entries <- loadAll "education/*"
-            let ctx =
-                    listField "education" defaultContext (return entries) `mappend`
-                    defaultContext
-            
-            getResourceBody
-                >>= applyAsTemplate ctx
-                >>= renderPandoc
-                >>= loadAndApplyTemplate "templates/information.html" ctx
-                >>= loadAndApplyTemplate "templates/default.html" ctx
-                >>= removeIndexHtml
+        compile $ toInformationPage $ entryContext "education/*" "education"
 
     match "experience.md" $ do
         route   $ niceRoute
-        compile $ do
-            entries <- loadAll "experience/*"
-            let ctx =
-                    listField "experience" defaultContext (return entries) `mappend`
-                    defaultContext
-            
-            getResourceBody
-                >>= applyAsTemplate ctx
-                >>= renderPandoc
-                >>= loadAndApplyTemplate "templates/information.html" ctx
-                >>= loadAndApplyTemplate "templates/default.html" ctx
-                >>= removeIndexHtml
+        compile $ toInformationPage $ entryContext "experiences/*" "experiences"
+
+    match "projects.md" $ do
+        route   $ niceRoute
+        compile $ toInformationPage $ entryContext "projects/*" "projects"
+
+    match "other.md" $ do
+        route   $ niceRoute
+        compile $ toInformationPage $ entryContext "other/*" "other"
 
     match "index.md" $ do
         route   $ setExtension "html"
@@ -85,10 +58,19 @@ main = hakyll $ do
 
 
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
-    defaultContext
+
+entryContext :: Pattern -> String -> Context String
+entryContext dir name =
+    listField name defaultContext (loadAll dir) `mappend` defaultContext
+
+toInformationPage :: Context String -> Compiler (Item String)
+toInformationPage ctx = 
+    getResourceBody
+        >>= applyAsTemplate ctx
+        >>= renderPandoc
+        >>= loadAndApplyTemplate "templates/information.html" ctx
+        >>= loadAndApplyTemplate "templates/default.html" ctx
+        >>= removeIndexHtml
 
 -- replace a foo/bar.md by foo/bar/index.html
 -- this way the url looks like: foo/bar in most browsers
