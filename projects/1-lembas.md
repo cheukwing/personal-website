@@ -1,7 +1,7 @@
 ---
 name: Lembas
 role: WebApps Group Project
-start: June 2018
+start: Jun 2018
 ---
 
 Unbalanced diets are a major problem in the UK and learning about proper nutrition can be a daunting task for someone wanting to make a change.

@@ -1,7 +1,7 @@
 ---
 name: Queen's Tower Climb
 role: C Group Project Extension
-start: June 2017
+start: Jun 2017
 ---
 
 Produced a game for the Raspberry Pi in a group of four and taking input from an NES controller, based on the traversal of the tiles of a randomly generated map to find the unique Hamiltonian path.
