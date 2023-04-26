@@ -61,7 +61,7 @@ main = hakyll $ do
 
 entryContext :: Pattern -> String -> Context String
 entryContext dir name =
-    listField name defaultContext (loadAll dir) `mappend` defaultContext
+    listField name defaultContext (recentFirst =<< loadAll dir) `mappend` defaultContext
 
 toInformationPage :: Context String -> Compiler (Item String)
 toInformationPage ctx = 
