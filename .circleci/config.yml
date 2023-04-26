@@ -30,7 +30,7 @@ jobs:
           paths:
             - "/root/.stack"
             - ".stack-work"
-      - run: stack exec site build
+      - run: stack exec site build --system-ghc
       - run:
           name: Deploy
           command: netlify deploy --dir _site/ --prod
