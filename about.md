@@ -2,7 +2,8 @@
 title: About
 ---
 
-Software engineer, working with Golang now, but still have some interest in functional programming from my university days.
+Mostly working with Golang now, but still dabble functional programming.
+Interested in complex distributed systems, intuitive APIs, pragmatic designs, as well as food, and live music.
 
 $partial("templates/links.html")$
 
