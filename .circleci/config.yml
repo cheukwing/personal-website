@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Resolve/Update Dependencies
           command: stack setup
-      - run: stack build
+      - run: stack build --system-ghc
       - save_cache:
           name: Cache Dependencies
           key: dependencies-{{ checksum "stack.yaml" }}
