@@ -23,14 +23,14 @@ jobs:
       - run:
           name: Resolve/Update Dependencies
           command: stack setup
-      - run: stack build --system-ghc
+      - run: stack build
       - save_cache:
           name: Cache Dependencies
           key: dependencies-{{ checksum "stack.yaml" }}
           paths:
             - "/root/.stack"
             - ".stack-work"
-      - run: stack exec site build --system-ghc
+      - run: stack exec site build
       - run:
           name: Deploy
           command: netlify deploy --dir _site/ --prod
